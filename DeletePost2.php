@@ -16,12 +16,12 @@ else{
   echo "<tr> <td> <b>Author</b> </td><td> <b>Post</b> </td>";
   foreach($_POST['checkboxOption'] as $selected){
 
-    $variables = "SELECT author_id, content FROM Posts WHERE post_id = '$selected'"; //Used to print to the user what was deleted
+    $variables = "SELECT author_id, content FROM Posts WHERE post_id = '$selected'";
 
     $result = $mysqli->query($variables);
     $row = $result->fetch_assoc();
 
-    $query = "DELETE FROM Posts WHERE post_id= '$selected'"; //Deletes using the id
+    $query = "DELETE FROM Posts WHERE post_id= '$selected'";
     if($mysqli->query($query)){
       echo "<tr>";
       echo "<td>" . $row['author_id'] . "</td><td>" . $row['content'] . "</td>";

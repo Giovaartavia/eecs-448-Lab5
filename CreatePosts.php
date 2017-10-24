@@ -1,5 +1,4 @@
 <?php
-//NOTE: Since foreign keys are currently not working, the check to see if the user already exists is made manually
 
 $authorName = $_POST['username'];
 $post = $_POST['post'];
@@ -11,8 +10,8 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
-$result = "INSERT INTO Posts (content, author_id) VALUES ('$post', '$authorName')";  //Variable for inserting to database
-$check = mysqli_query($query,"SELECT user_id FROM Users"); //Variable for checking if user already exists
+$result = "INSERT INTO Posts (content, author_id) VALUES ('$post', '$authorName')";
+$check = mysqli_query($query,"SELECT user_id FROM Users");
 $isNameInDB = false;
 
 if($post == NULL || $post == "")
@@ -21,7 +20,7 @@ if($post == NULL || $post == "")
 }
 else 
   {
-    while($row = mysqli_fetch_array($check)){ //Manually checks if user exists
+    while($row = mysqli_fetch_array($check)){
       if ($row['user_id'] == $authorName){
         if ($query->query($result)){
           printf("Data added succesfully");
@@ -33,6 +32,9 @@ else
       printf("ERROR: User does not exist!");
     }
   }
+/*else {
+  printf("ERROR: User id already exists!");
+}*/
 
 /* close connection */
 $query->close();

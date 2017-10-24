@@ -19,9 +19,9 @@ echo "<table border='1'>
 
 while($row = mysqli_fetch_array($result))
 {
-    echo "<tr>";
-    echo "<td>" . $row['content'] . "</td>";
-    echo "</tr>";
+echo "<tr>";
+echo "<td>" . $row['content'] . "</td>";
+echo "</tr>";
 }
 echo "</table>";
 
